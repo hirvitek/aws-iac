@@ -1,0 +1,30 @@
+{
+  "name": "aws-iac",
+  "version": "1.0.0",
+  "description": "Collection of AWS infrastructure as a code templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "cfn-lint -t '**/*.yaml'",
+    "precommit": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hirvitek/aws-iac.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hirvitek/aws-iac/issues"
+  },
+  "homepage": "https://github.com/hirvitek/aws-iac#readme",
+  "dependencies": {
+    "husky": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  }
+}
