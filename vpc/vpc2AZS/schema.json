@@ -1,0 +1,401 @@
+{
+    "typeName": "Hirvitek::VPC::2AZS::MODULE",
+    "description": "Schema for Module Fragment of type Hirvitek::VPC::2AZS::MODULE",
+    "properties": {
+        "Parameters": {
+            "type": "object",
+            "properties": {
+                "Environment": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "An environment name that will be prefixed to resource names"
+                },
+                "Appname": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type"
+                    ]
+                },
+                "ExportParameters": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "This template allows you to export SSM parameters"
+                },
+                "FlowLogsEnabled": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "Create flow logs for the VPC"
+                },
+                "ClassB": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "Class B of VPC (10.XXX.0.0/16)"
+                },
+                "TrafficType": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "The type of traffic to log"
+                },
+                "RetentionInDays": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Description"
+                    ],
+                    "description": "Specifies the number of days you want to retain log events"
+                }
+            }
+        },
+        "Resources": {
+            "properties": {
+                "VPC": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::VPC"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "InternetGateway": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::InternetGateway"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "InternetGatewayAttachment": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::VPCGatewayAttachment"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnet1": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::Subnet"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnet2": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::Subnet"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnet1": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::Subnet"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnet2": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::Subnet"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicRouteTable": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::RouteTable"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateRouteTable": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::RouteTable"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "DefaultPublicRoute": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::Route"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnet1RouteTableAssociation": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::SubnetRouteTableAssociation"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnet2RouteTableAssociation": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::SubnetRouteTableAssociation"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnet1RouteTableAssociation": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::SubnetRouteTableAssociation"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnet2RouteTableAssociation": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::SubnetRouteTableAssociation"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "Role": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::IAM::Role"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "LogGroup": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::Logs::LogGroup"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "FlowLog": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::EC2::FlowLog"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "VPCID": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnetId1": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PublicSubnetId2": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnetId1": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "PrivateSubnetId2": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "FlowLogsArn": {
+                    "type": "object",
+                    "properties": {
+                        "Type": {
+                            "type": "string",
+                            "const": "AWS::SSM::Parameter"
+                        },
+                        "Properties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": true
+}
