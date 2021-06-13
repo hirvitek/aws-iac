@@ -40,13 +40,13 @@ Parameters:
 and then on `--parametes-override` you can pass the key:
 
 ```
-MyParameter: vpcteststack-publicSubnet1-id
+MyParameter: /vpcteststack/publicSubnet1/id
 ```
 
 The naming schema is always the same: 
 
 ```
-<Stack name in which the parameter belogs>-<name of the resource>-<type of value>
+/<Stack name in which the parameter belogs>/<name of the resource>/<type of value>
 ```
 
 # Module

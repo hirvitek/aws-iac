@@ -8,7 +8,7 @@ Parameters:
       - prod
       - stag
       - dev
-    ConstraintDescription: Environment is not valid
+    ConstraintDescription: invalid environment, only [prod, stag, dev] are allowed
   Appname:
     Type: String
   ExportParameters:
@@ -43,12 +43,9 @@ Parameters:
     AllowedValues: [ 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653 ]
 
 Conditions:
-  ShouldCreateParameters:
-    !Equals [ true, !Ref ExportParameters ]
-  ShouldCreateFlowLogs:
-    !Equals [ true, !Ref FlowLogsEnabled ]
-  ShouldCreateFlowLogsParameters:
-    !And [ Condition: ShouldCreateFlowLogs, Condition: ShouldCreateParameters]
+  ShouldCreateParameters: !Equals [ true, !Ref ExportParameters ]
+  ShouldCreateFlowLogs: !Equals [ true, !Ref FlowLogsEnabled ]
+  ShouldCreateFlowLogsParameters: !And [ Condition: ShouldCreateFlowLogs, Condition: ShouldCreateParameters]
 
 
 Resources:
@@ -280,7 +277,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-vpc-id
+      Name: !Sub /${AWS::StackName}/vpc/id
       Tags:
         app: !Ref Appname
         env: !Ref Environment
@@ -293,7 +290,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-publicSubnet1-id
+      Name: !Sub /${AWS::StackName}/publicSubnet1/id
       Tags:
         app: !Ref Appname
         env: !Ref Environment
@@ -306,7 +303,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-publicSubnet2-id
+      Name: !Sub /${AWS::StackName}/publicSubnet2/id
       Tags:
         app: !Ref Appname
         env: !Ref Environment
@@ -319,7 +316,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-privateSubnet1-id
+      Name: !Sub /${AWS::StackName}/privateSubnet1/id
       Tags:
         app: !Ref Appname
         env: !Ref Environment
@@ -332,7 +329,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-privateSubnet2-id
+      Name: !Sub /${AWS::StackName}/privateSubnet2/id
       Tags:
         app: !Ref Appname
         env: !Ref Environment
@@ -345,7 +342,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Condition: ShouldCreateFlowLogsParameters
     Properties:
-      Name: !Sub ${AWS::StackName}-flowlogs-arn
+      Name: !Sub /${AWS::StackName}/flowlogs/arn
       Tags:
         app: !Ref Appname
         env: !Ref Environment

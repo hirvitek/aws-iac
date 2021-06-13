@@ -1,2 +1,2 @@
-# aws-iac
-Collection of AWS infrastructure as a code templates
+# AWS Infrastructure as Code
+Collection of AWS infrastructure as code templates
