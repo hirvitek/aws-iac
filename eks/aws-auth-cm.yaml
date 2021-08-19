@@ -5,10 +5,14 @@ metadata:
   namespace: kube-system
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::<ACCOUNT_ID>:role/eksctl-eks-boilerplate-nodegroup-NodeInstanceRole-11L4V0GWVMJMK
+    - rolearn: arn:aws:iam::{{AccountId}}:role/{{InstanceRole}}
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers
         - system:nodes
-    - rolearn: arn:aws:iam::<ACCOUNT_ID>:role/AWSReservedSSO_ViewOnlyAccess_499aeb39db416c59
+    - rolearn: arn:aws:iam::{{AccountId}}:role/{{SSOViewOnlyAccess}}
       username: readonlyuser
+    - rolearn: arn:aws:iam::{{AccountId}}:role/{{SSODeveloperAccess}}
+      username: developeruser
+    - rolearn: arn:aws:iam::{{AccountId}}:role/{{SSOAdminAccess}}
+      username: adminuser

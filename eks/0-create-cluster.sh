@@ -12,5 +12,8 @@ echo "Cluster created, your kube config located at $KUBECONFIG"
 echo "Waiting for resources"
 sleep 10
 
+cluster_data=$(aws eks describe-cluster --name care-eks-staging | jq -r '.')
+
+
 echo "Deploying Nginx ingress controller and Load balancer"
 helm install ingress-nginx ingress-nginx/ingress-nginx -f "$SCRIPT_PATH"/nginx-values.yaml

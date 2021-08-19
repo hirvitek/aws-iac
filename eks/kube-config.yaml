@@ -1,19 +1,19 @@
 apiVersion: v1
 clusters:
   - cluster:
-      certificate-authority-data: ""
-      server: ""
-    name: eks-boilerplate.us-east-1.eksctl.io
+      certificate-authority-data: {{CERT}}
+      server: {{SERVER_ENDPOINT}}
+    name: {{CLUSTER_NAME}}.{{AWS_REGION}}.eksctl.io
 contexts:
   - context:
-      cluster: eks-boilerplate.us-east-1.eksctl.io
-      user: matteo@eks-boilerplate.us-east-1.eksctl.io
-    name: matteo@eks-boilerplate.us-east-1.eksctl.io
-current-context: matteo@eks-boilerplate.us-east-1.eksctl.io
+      cluster: {{CLUSTER_NAME}}.{{AWS_REGION}}.eksctl.io
+      user: {{USERNAME}}@{{CLUSTER_NAME.{{AWS_REGION}}.eksctl.io
+    name: {{USERNAME}}@{{CLUSTER_NAME.{{AWS_REGION}}.eksctl.io
+current-context: {{USERNAME}}@{{CLUSTER_NAME.{{AWS_REGION}}.eksctl.io
 kind: Config
 preferences: {}
 users:
-  - name: matteo@eks-boilerplate.us-east-1.eksctl.io
+  - name: {{USERNAME}}@{{CLUSTER_NAME.{{AWS_REGION}}.eksctl.io
     user:
       exec:
         apiVersion: client.authentication.k8s.io/v1alpha1
@@ -22,11 +22,11 @@ users:
           - eks
           - get-token
           - --cluster-name
-          - eks-boilerplate
+          - {{CLUSTER_NAME}}
         env:
           - name: AWS_STS_REGIONAL_ENDPOINTS
             value: regional
           - name: AWS_DEFAULT_REGION
-            value: us-east-1
+            value: {{AWS_REGION}}
           - name: AWS_PROFILE
-            value: ""
+            value: {{AWS_PROFILE}}
