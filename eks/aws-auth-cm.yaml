@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::<ACCOUNT_ID>:role/eksctl-eks-boilerplate-nodegroup-NodeInstanceRole-11L4V0GWVMJMK
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+    - rolearn: arn:aws:iam::<ACCOUNT_ID>:role/AWSReservedSSO_ViewOnlyAccess_499aeb39db416c59
+      username: readonlyuser
