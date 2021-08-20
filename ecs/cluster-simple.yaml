@@ -1,7 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: >
-  This template deploys an ECS cluster to the provided VPC and subnets
-  using an Auto Scaling Group
+Description: This template deploys a simple ECS cluster
 
 Parameters:
   Environment:
@@ -14,8 +12,6 @@ Parameters:
     ConstraintDescription: invalid environment, only [prod, stag, dev] are allowed
   Appname:
     Type: String
-  VPC:
-    Type: AWS::SSM::Parameter::Value<String>
   ExportParameters:
     Description: This template allows you to export SSM parameters
     Default: false
@@ -26,11 +22,18 @@ Parameters:
     Default: false
     Type: String
     AllowedValues: [ true, false ]
+  AllowECSAnywhere:
+    Description: Enable ECS anywhere for this cluster
+    Default: false
+    Type: String
+    AllowedValues: [ true, false ]
 
 Conditions:
   IsProduction: !Equals [ !Ref Environment, prod ]
   ShouldCreateParameters: !Equals [ true, !Ref ExportParameters ]
   ShouldAllowContainersInsights: !Equals [ true, !Ref AllowContainersInsights ]
+  ShouldAllowECSAnywhere: !Equals [ true, !Ref AllowECSAnywhere ]
+  ShouldAllowECSAnywhereAndExportParameters: !And [ Condition: ShouldAllowECSAnywhere, Condition: ShouldCreateParameters]
 
 Resources:
   ECSCluster:
@@ -52,9 +55,10 @@ Resources:
 
   ECSAnywhereRole:
     Type: AWS::IAM::Role
+    Condition: ShouldAllowECSAnywhere
     Properties:
       Path: /
-      RoleName: !Sub ${AWS::StackName}-ecs-anywhere
+      RoleName: !Sub ${AWS::StackName}-ECSAnywhereRole
       AssumeRolePolicyDocument: |
         {
             "Statement": [{
@@ -94,9 +98,9 @@ Resources:
 
   ECSAnywhereRoleArn:
     Type: AWS::SSM::Parameter
-    Condition: ShouldCreateParameters
+    Condition: ShouldAllowECSAnywhereAndExportParameters
     Properties:
-      Name: !Sub /${AWS::StackName}/role/ecs-anywhere/arn
+      Name: !Sub /${AWS::StackName}/ecs-anywhere-role/arn
       Tags:
         app: !Ref Appname
         env: !Ref Environment

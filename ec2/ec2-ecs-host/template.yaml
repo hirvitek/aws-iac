@@ -125,11 +125,11 @@ Resources:
   # This IAM Role is attached to all of the ECS hosts. It is based on the default role
   # published here:
   # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html
-  ECSRole:
+  ECSHostRole:
     Type: AWS::IAM::Role
     Properties:
       Path: /
-      RoleName: !Sub ${AWS::StackName}-ecs-host
+      RoleName: ECSHostRole
       Tags:
         - Key: app
           Value: !Ref Appname

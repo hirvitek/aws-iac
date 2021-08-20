@@ -5,6 +5,7 @@ kind: ClusterConfig
 availabilityZones:
   - us-east-1a
   - us-east-1d
+  - us-east-1c
 
 metadata:
   name: eks-boilerplate
