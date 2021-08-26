@@ -1,6 +1,8 @@
 resource "random_password" "password" {
   length           = 32
   special          = false
+  number      = true
+  upper       = true
 }
 
 resource "aws_secretsmanager_secret" "cluster_admin_credentials" {
@@ -17,11 +19,11 @@ resource "aws_secretsmanager_secret_version" "cluster_admin_credentials_version"
   })
 }
 
-resource "aws_secretsmanager_secret_rotation" "cluster_admin_credentials_rotation" {
-  secret_id = aws_secretsmanager_secret.cluster_admin_credentials.id
-  rotation_lambda_arn = aws_lambda_function.example.arn
-
-  rotation_rules {
-    automatically_after_days = 30
-  }
-}
+//resource "aws_secretsmanager_secret_rotation" "cluster_admin_credentials_rotation" {
+//  secret_id = aws_secretsmanager_secret.cluster_admin_credentials.id
+//  rotation_lambda_arn = aws_lambda_function.example.arn
+//
+//  rotation_rules {
+//    automatically_after_days = 30
+//  }
+//}

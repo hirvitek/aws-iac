@@ -20,3 +20,4 @@ rpdk.log
 
 aurora/terraform/.terraform*
 aurora/terraform/terraform*
+aurora/terraform/vars.tfvars

@@ -1,0 +1,5 @@
+vpc_id = "vpc-000000"
+aws_region = "us-east-1"
+database_user = "developer"
+private_subnet_1 = "private-subnet-1"
+private_subnet_2 = "private-subnet-2"
