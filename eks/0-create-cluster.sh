@@ -13,7 +13,9 @@ echo "Cluster created, your kube config located at $KUBECONFIG"
 echo "Waiting for resources"
 sleep 10
 
+# Remove the previous kube config and download the one with correct permissions
 echo "Creating kubeconfig"
+rm "$KUBECONFIG"
 aws eks update-kubeconfig --name $CLUSTER_NAME --kubeconfig "$KUBECONFIG"
 
 echo "Deploying Nginx ingress controller and Load balancer"

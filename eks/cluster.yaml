@@ -22,3 +22,9 @@ managedNodeGroups:
     instanceType: t3.medium
     ssh:
       enableSsm: true
+
+iam:
+  withOIDC: true
+
+#secretsEncryption:
+#  keyARN: ""
