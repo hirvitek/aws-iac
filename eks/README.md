@@ -15,6 +15,6 @@ This boilerplate contains an EKS cluster purely integrated with AWS
 
 - [ ] Secret manager: https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html
 
-- [ ] AWS AppMesh, mTLS
+- [ ] AWS AppMesh, mTLS or Linkerd
 
-- [ ] Go scripts to render cluster configurations and roles 
+- [ ] Go scripts to render cluster configurations and roles

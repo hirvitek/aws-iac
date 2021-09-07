@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: nginx-deployment
+      annotations:
+        linkerd.io/inject: enabled
     spec:
       containers:
         - name: nginx
