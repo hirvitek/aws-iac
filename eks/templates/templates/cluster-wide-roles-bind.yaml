@@ -1,0 +1,39 @@
+{{/*---*/}}
+{{/*apiVersion: rbac.authorization.k8s.io/v1*/}}
+{{/*kind: ClusterRoleBinding*/}}
+{{/*metadata:*/}}
+{{/*  name: readonly-bind*/}}
+{{/*subjects:*/}}
+{{/*  - kind: User*/}}
+{{/*    name: readonlyuser*/}}
+{{/*    apiGroup: rbac.authorization.k8s.io*/}}
+{{/*roleRef:*/}}
+{{/*  kind: ClusterRole*/}}
+{{/*  name: readonlyrole*/}}
+{{/*  apiGroup: rbac.authorization.k8s.io*/}}
+{{/*---*/}}
+{{/*apiVersion: rbac.authorization.k8s.io/v1*/}}
+{{/*kind: ClusterRoleBinding*/}}
+{{/*metadata:*/}}
+{{/*  name: developer-bind*/}}
+{{/*subjects:*/}}
+{{/*  - kind: User*/}}
+{{/*    name: developeruser*/}}
+{{/*    apiGroup: rbac.authorization.k8s.io*/}}
+{{/*roleRef:*/}}
+{{/*  kind: ClusterRole*/}}
+{{/*  name: developerrole*/}}
+{{/*  apiGroup: rbac.authorization.k8s.io*/}}
+{{/*---*/}}
+{{/*apiVersion: rbac.authorization.k8s.io/v1*/}}
+{{/*kind: ClusterRoleBinding*/}}
+{{/*metadata:*/}}
+{{/*  name: admin-bind*/}}
+{{/*subjects:*/}}
+{{/*  - kind: User*/}}
+{{/*    name: adminuser*/}}
+{{/*    apiGroup: rbac.authorization.k8s.io*/}}
+{{/*roleRef:*/}}
+{{/*  kind: ClusterRole*/}}
+{{/*  name: adminrole*/}}
+{{/*  apiGroup: rbac.authorization.k8s.io*/}}
