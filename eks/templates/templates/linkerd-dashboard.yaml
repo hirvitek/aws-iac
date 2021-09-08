@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web-ingress
+  name: linkerd-dashboard-ingress
   namespace: linkerd-viz
   annotations:
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local:8084
@@ -9,14 +9,14 @@ metadata:
       proxy_set_header Origin "";
       proxy_hide_header l5d-remote-ip;
       proxy_hide_header l5d-server-id;
-    nginx.ingress.kubernetes.io/auth-url: "https://linkerd.sample.rebugit.com/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://linkerd.sample.rebugit.com/oauth2/start?rd=$escaped_request_uri"
+    nginx.ingress.kubernetes.io/auth-url: "https://{{.Values.linkerdDashboardHost}}/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://{{.Values.linkerdDashboardHost}}/oauth2/start?rd=$escaped_request_uri"
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
     nginx.ingress.kubernetes.io/proxy-buffering: "on"
 spec:
   ingressClassName: nginx
   rules:
-    - host: linkerd.sample.rebugit.com
+    - host: {{.Values.linkerdDashboardHost}}
       http:
         paths:
           - path: /
