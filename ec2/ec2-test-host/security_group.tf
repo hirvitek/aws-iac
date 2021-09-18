@@ -26,6 +26,7 @@ resource "aws_security_group_rule" "security_group_inbound_rule_https" {
   to_port = 443
 }
 
+// This might be not necessary is you are using SSM Session Manager
 resource "aws_security_group_rule" "security_group_inbound_rule_ssh" {
   protocol = "tcp"
   security_group_id = aws_security_group.instance_security_group.id

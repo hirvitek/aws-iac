@@ -3,3 +3,6 @@ init:
 
 apply:
 	. ./env.sh && terraform apply
+
+destroy:
+	. ./env.sh && terraform destroy
